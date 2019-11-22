@@ -64,7 +64,7 @@ Transit Route Table
 ![](tgw_rt.jpg)
 
 Transit Route Propagations
-![](tgw_propagations)
+![](tgw_propagations.jpg)
 
 Transit Routes
 ![](tgw_routes.jpg)
