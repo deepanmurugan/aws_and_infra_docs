@@ -1,1 +1,35 @@
+# AWS - Transit Gateway (TGW)
 
+Transit Gateway is a service provided by AWS inorder to connect multiple VPC/on-premise server to a single gateway. As of now transit gateway is a region specific service.
+
+Points specific to TGW:
+
+1) Attachments:
+     Connection between a VPC/VPN and a Transit gateway (TGW).
+
+2) Association:
+     Association is used to identify which route table to be called when a traffic comes for a particular VPC CIDR.
+
+3) Propogation:
+     Propogation is used to propogate the routes in route table.
+
+4) Route Tables:
+     Consists of routes (where to look for the next hop).
+     
+The example scenario here I took has 5 VPC. For simplicity I have named the vpc, subnets and other related components in a easier way. You may need to name then appropriately when you create the infra for prod set up.
+
+
+VPC1 10.1.0.0/16
+VPC2 10.2.0.0/16
+VPC3 10.3.0.0/16
+VPC4 10.4.0.0/16
+VPC5 10.5.0.0/16
+
+Scenario planning to achieve: 
+NOTE: <---> both can talk to each other.
+
+1) VPC1 <---> VPC2, VPC3, VPC4.
+2) VPC2 <---> VPC1, VPC3, VPC4, VPC5.
+3) VPC3 <---> VPC1, VPC2, VPC4.
+4) VPC4 <---> VPC1, VPC2, VPC3, VPC5.
+5) VPC5 <---> VPC2, VPC4.
