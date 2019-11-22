@@ -33,3 +33,9 @@ NOTE: <---> both can talk to each other.
 3) VPC3 <---> VPC1, VPC2, VPC4.
 4) VPC4 <---> VPC1, VPC2, VPC3, VPC5.
 5) VPC5 <---> VPC2, VPC4.
+
+For a full mesh configuration, you will end up creating n(n-1)/2 where n is the number of VPC. 
+
+Let us take the number of VPC as 5, for a full mesh you need to create 5(5-1)/2 = 10 VPC peering connections. When you have 10 VPC, you need to create 45 peering connections. It will drastically increase when the number of VPC increases.
+
+Below is a sample architecture of 5 VPC, where we created 8 peering connections in order to achieve our routing expectations. (Note: our requirement is not a full mesh configuration).
