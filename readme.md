@@ -47,3 +47,36 @@ Above VPC Peering has difficult to manage since we need to modify the route tabl
 
 # TGW Architecture
 ![](tgw.jpg)
+
+VPC Structure
+![](VPC.jpg)
+
+VPC Routing Table
+![](routetable.jpg)
+
+Transit Gateway
+![](transitgw.jpg)
+
+Transit Gateway Attachment
+![](tgw_attachment.jpg)
+
+Transit Route Table
+![](tgw_rt.jpg)
+
+Transit Route Propagations
+![](tgw_propagations)
+
+Transit Routes
+![](tgw_routes.jpg)
+
+Let's see how the overall flow works.
+Example: Instance in VPC1 is trying to access instance in VPC2.
+10.1.0.1 trying to access 10.2.0.1
+
+Route table attached to the subnet in VPC has a route entry for 10.0.0.0/8 which has the closest match for 10.2.0.1. Hence the traffic goes to our transit gateway. Look at routetable image (entry 2).
+
+TGW recieves the traffic from VPC1. It now checks which association is availalbe for the VPC1, from that it will see which propagation has configured. And which route table is configured and route traffic accordingly.
+
+The traffic for 10.2.0.1 is coming from VPC1 to VPC2. tgw_rt_vpc1_vpc234 is associated to VPC1 (i.e. VPC1 attachment), and the traffic destination 10.2.0.1 has a matching route table entry in tgw route table. Hence it will forward that request to VPC2 attachment (i.e. the VPC2 itself).
+
+Ideally we must have a routing option from VPC2 to VPC1, so that the outbound traffic will come to VPC1.
