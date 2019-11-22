@@ -42,3 +42,8 @@ Below is a sample architecture of 5 VPC, where we created 8 peering connections 
 
 # VPC Peering Architecture 
 ![](vpc_peering.jpg)
+
+Above VPC Peering has difficult to manage since we need to modify the route table for each VPC and it is complex when VPC increases more than 5 or 10. Below is the architecture of same model in VPC Transit gateway. All the routing is carried out inside TGW route tables.
+
+# TGW Architecture
+![](tgw.jpg)
