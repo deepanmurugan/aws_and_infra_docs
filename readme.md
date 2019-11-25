@@ -80,3 +80,5 @@ TGW recieves the traffic from VPC1. It now checks which association is availalbe
 The traffic for 10.2.0.1 is coming from VPC1 to VPC2. tgw_rt_vpc1_vpc234 is associated to VPC1 (i.e. VPC1 attachment), and the traffic destination 10.2.0.1 has a matching route table entry in tgw route table. Hence it will forward that request to VPC2 attachment (i.e. the VPC2 itself).
 
 Ideally we must have a routing option from VPC2 to VPC1, so that the outbound traffic will come to VPC1.
+
+Please check my terraform repo to spin the whole components for a full mesh tgw architecture using terraform scripts.
