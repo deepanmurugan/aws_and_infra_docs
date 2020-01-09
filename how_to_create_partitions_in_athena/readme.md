@@ -7,6 +7,7 @@ bucket_name/AWSLogs/accountid/CloudTrail/region/year/month/date/filename.gz file
 
 Below sample query will create the Athena table with region, year, month and date partitions.
 
+```
 CREATE EXTERNAL TABLE `cloudtrail_logs`(
   `eventversion` string COMMENT 'from deserializer', 
   `useridentity` struct<type:string,principalid:string,arn:string,accountid:string,invokedby:string,accesskeyid:string,username:string,sessioncontext:struct<attributes:struct<mfaauthenticated:string,creationdate:string>,sessionissuer:struct<type:string,principalid:string,arn:string,accountid:string,username:string>>> COMMENT 'from deserializer', 
@@ -44,7 +45,8 @@ OUTPUTFORMAT
   'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
 LOCATION
   's3://your_cloudtrail_bucket_name/AWSLogs/Account_ID'
-  
+```
+
 Running the above query will create you the partitioned table named cloudtrail_logs. By default there won't be any data in the table, you have to load each partitions individually so that it will load the S3 files to athena table.
 
 Below is the command to load the partitions to the table.
