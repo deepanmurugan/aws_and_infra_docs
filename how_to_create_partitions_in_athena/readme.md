@@ -57,17 +57,39 @@ ALTER TABLE sampledb.cloudtrail_logs ADD PARTITION (region = 'us-east-1', year =
 
 It is really difficult to load the data manually for all the regions daily. I already have a lambda function created in my 'python_boto3' repository which has python file which will load the partitions automatically whenever you trigger the function.
 
-How to fetch the data using partitions?
+### How to fetch the data using partitions?
 
 Using where condition you can fetch the data from partitions. 
 Once your table is created with partitions you will see all the partitions as an extra column in your tables. When you look at the below table, we never provided any column named region/year/month/date in the above create table statement but we got these 4 new columns. It is created based on our partitions.
 
+![](table.jpg)
 
+### Let's see the actual benefits by running different queries
 
+Running query with just region partition, below query just uses one where condition. i.e. region
 
+![](full_query.jpg)
 
+Data scanned is 814.29 KB.
 
+S3 size is 814.3 KB of folder s3://your_cloudtrail_bucket_name/AWSLogs/Account_ID/CloudTrail/us-east-1/ is also 814.3 KB.
 
+![](s3_size.jpg)
 
+Whereas running query with all partitions region, year, month and date. Data scanned in athena is 409.83 KB.
 
+![](selected_query.jpg)
 
+And the S3 size of the folder s3://your_cloudtrail_bucket_name/AWSLogs/Account_ID/CloudTrail/us-east-1/2020/01/09 is also 409.9 KB.
+
+![](s3_selected_size.jpg)
+
+Which concludes that using partitions we scan lesser data and get the same result in an efficient way.
+
+This is just one way of loading partitions into the table. The above method of loading partition is used when you have th folder structure as 2019/01/03 i.e. without year=2019/month=01/date=03. There is another way of loading partition as well and that is used when your folder structure is like region=us-east-1/year=2020/month=01/date=05 etc.
+
+You can just run the below command and it will load the all the partitions to the table at once.
+
+```
+MSCK REPAIR TABLE table_name;
+```
