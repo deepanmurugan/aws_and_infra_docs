@@ -51,7 +51,9 @@ Running the above query will create you the partitioned table named cloudtrail_l
 
 Below is the command to load the partitions to the table.
 
+```
 ALTER TABLE sampledb.cloudtrail_logs ADD PARTITION (region = 'us-east-1', year = '2020', month = '01', date = '08') LOCATION 's3://your_cloudtrail_bucket_name/AWSLogs/Account_ID/CloudTrail/us-east-1/2020/01/08/';
+```
 
 It is really difficult to load the data manually for all the regions daily. I already have a lambda function created in my 'python_boto3' repository which has python file which will load the partitions automatically whenever you trigger the function.
 
