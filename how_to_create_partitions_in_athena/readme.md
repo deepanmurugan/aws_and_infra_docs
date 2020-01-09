@@ -5,7 +5,7 @@ Athena is service offered by AWS which is used to query csv/tsv/json files direc
 This is the sample table which I created for reading cloudtrail logs from S3 to Athena. The path of S3 folder is 
 bucket_name/AWSLogs/accountid/CloudTrail/region/year/month/date/filename.gz files. CloudTrail will upload .gz files in the mentioned folder structure. So when you need to find the who is the user that has launched instances in us-east-1 region within last 1 week, it is unnecessary to scan the whole data. If you have partitions on region, year, month, date you can just scan only the related data and produce the same result in a cost effective and performance effective way.
 
-Below sample query will create the Athena table with region, year, month and date partitions.
+### Below sample query will create the Athena table with region, year, month and date partitions.
 
 ```
 CREATE EXTERNAL TABLE `cloudtrail_logs`(
@@ -49,7 +49,7 @@ LOCATION
 
 Running the above query will create you the partitioned table named cloudtrail_logs. By default there won't be any data in the table, you have to load each partitions individually so that it will load the S3 files to athena table.
 
-Below is the command to load the partitions to the table.
+### Below is the command to load the partitions to the table.
 
 ```
 ALTER TABLE sampledb.cloudtrail_logs ADD PARTITION (region = 'us-east-1', year = '2020', month = '01', date = '08') LOCATION 's3://your_cloudtrail_bucket_name/AWSLogs/Account_ID/CloudTrail/us-east-1/2020/01/08/';
@@ -85,6 +85,8 @@ And the S3 size of the folder s3://your_cloudtrail_bucket_name/AWSLogs/Account_I
 ![](s3_selected_size.jpg)
 
 Which concludes that using partitions we scan lesser data and get the same result in an efficient way.
+
+### Another method of loading data into partitioned table
 
 This is just one way of loading partitions into the table. The above method of loading partition is used when you have th folder structure as 2019/01/03 i.e. without year=2019/month=01/date=03. There is another way of loading partition as well and that is used when your folder structure is like region=us-east-1/year=2020/month=01/date=05 etc.
 
