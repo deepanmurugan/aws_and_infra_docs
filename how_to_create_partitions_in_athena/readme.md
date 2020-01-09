@@ -7,7 +7,7 @@ bucket_name/AWSLogs/accountid/CloudTrail/region/year/month/date/filename.gz file
 
 Below sample query will create the Athena table with region, year, month and date partitions.
 
-`CREATE EXTERNAL TABLE `cloudtrail_logs`(
+CREATE EXTERNAL TABLE `cloudtrail_logs`(
   `eventversion` string COMMENT 'from deserializer', 
   `useridentity` struct<type:string,principalid:string,arn:string,accountid:string,invokedby:string,accesskeyid:string,username:string,sessioncontext:struct<attributes:struct<mfaauthenticated:string,creationdate:string>,sessionissuer:struct<type:string,principalid:string,arn:string,accountid:string,username:string>>> COMMENT 'from deserializer', 
   `eventtime` string COMMENT 'from deserializer', 
@@ -43,13 +43,13 @@ STORED AS INPUTFORMAT
 OUTPUTFORMAT 
   'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
 LOCATION
-  's3://your_cloudtrail_bucket_name/AWSLogs/Account_ID'`
+  's3://your_cloudtrail_bucket_name/AWSLogs/Account_ID'
   
 Running the above query will create you the partitioned table named cloudtrail_logs. By default there won't be any data in the table, you have to load each partitions individually so that it will load the S3 files to athena table.
 
 Below is the command to load the partitions to the table.
 
-`ALTER TABLE sampledb.cloudtrail_logs ADD PARTITION (region = 'us-east-1', year = '2020', month = '01', date = '08') LOCATION 's3://your_cloudtrail_bucket_name/AWSLogs/Account_ID/CloudTrail/us-east-1/2020/01/08/';`
+ALTER TABLE sampledb.cloudtrail_logs ADD PARTITION (region = 'us-east-1', year = '2020', month = '01', date = '08') LOCATION 's3://your_cloudtrail_bucket_name/AWSLogs/Account_ID/CloudTrail/us-east-1/2020/01/08/';
 
 It is really difficult to load the data manually for all the regions daily. I already have a lambda function created in my 'python_boto3' repository which has python file which will load the partitions automatically whenever you trigger the function.
 
