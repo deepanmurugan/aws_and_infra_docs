@@ -1,1 +1,1 @@
-#How to create partitions in Athena
+# How to create partitions in Athena
