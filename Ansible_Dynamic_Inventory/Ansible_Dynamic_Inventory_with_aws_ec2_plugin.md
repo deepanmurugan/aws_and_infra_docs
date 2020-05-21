@@ -64,15 +64,16 @@ root@ip-172-31-36-29:/home/ubuntu# ansible-inventory -i aws_dyinv.yml --graph
   |  |--ec2-18-224-182-42.us-east-2.compute.amazonaws.com
   |--@ungrouped:
 ```
-Let's see about the above file aws_dyinv.yml in detail.
 
+Let's see about the above file aws_dyinv.yml in detail.
+```
 plugin: aws_ec2 - Defines which plugin to use
 boto_profile: default - My boto profile on this machine where I run ansible inventory command
 regions - AWS EC2 regions, you can mention any number of regions
 filters - Used to filter out EC2 instances based on conditions. Here we are selecting only running instances with tag `Env: Prod`
 keyed_groups - Define how you want to create groups. Here we are again using tag called `Role` for creating groups
 compose - Output (you can mention private_ip_address or public_ip_address based on your need)
-
+```
 ### Run ansible playbook
 
 Suppose if I want to run some ansible playbook for all the servers in Backend_App, you can use the command like below. Below is the sample playbook that I trigger.
