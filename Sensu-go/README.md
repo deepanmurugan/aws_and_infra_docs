@@ -5,6 +5,7 @@ Sensu Go Installation, Configuration and Concepts
 3. [Create checks](https://github.com/deepanmurugan/aws_and_infra_docs/blob/master/Sensu-go/Create_checks.md)
 4. [Create Asset Locally](https://github.com/deepanmurugan/aws_and_infra_docs/blob/master/Sensu-go/Create_asset_locally.md)
 5. [Create Hooks](https://github.com/deepanmurugan/aws_and_infra_docs/blob/master/Sensu-go/Create_hooks.md)
-6. [Create Handler - Slack]()
+6. [Create Handler - Slack](https://github.com/deepanmurugan/aws_and_infra_docs/blob/master/Sensu-go/Create_handler_slack.md)
 7. [Filter and Alter Fatigue reduction]()
 8. [Standalone checks in Sensu Go]()
+9. [Sensuctl commands]()
