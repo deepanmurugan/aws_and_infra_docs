@@ -8,4 +8,4 @@ Sensu Go Installation, Configuration and Concepts
 6. [Create Handler - Slack](https://github.com/deepanmurugan/aws_and_infra_docs/blob/master/Sensu-go/Create_handler_slack.md)
 7. [Filter and Alert Fatigue reduction](https://github.com/deepanmurugan/aws_and_infra_docs/blob/master/Sensu-go/Sensu_go_filters.md)
 8. [Standalone checks in Sensu Go]()
-9. [Sensuctl commands]()
+9. [Sensuctl commands](https://github.com/deepanmurugan/aws_and_infra_docs/blob/master/Sensu-go/sensuctl_commands.md)
