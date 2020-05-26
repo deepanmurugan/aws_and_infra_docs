@@ -82,7 +82,7 @@ We will see the details of the configuration in upcoming tutorials.
 
 ### Start sensu-agent
 ```
-service sensu-agent start
+sudo service sensu-agent start
 ```
 
 Go to the Sensu go UI and now you can see your server on the sensu go dashboard. You can configure as many servers as you want.
