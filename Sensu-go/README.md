@@ -9,3 +9,4 @@ Sensu Go Installation, Configuration and Concepts
 7. [Filter and Alert Fatigue reduction](https://github.com/deepanmurugan/aws_and_infra_docs/blob/master/Sensu-go/Sensu_go_filters.md)
 8. [Standalone checks in Sensu Go](https://github.com/deepanmurugan/aws_and_infra_docs/blob/master/Sensu-go/Standalone_checks.md)
 9. [Sensuctl commands](https://github.com/deepanmurugan/aws_and_infra_docs/blob/master/Sensu-go/sensuctl_commands.md)
+10. [Migrate Sensu Core to Sensu Go](https://github.com/deepanmurugan/aws_and_infra_docs/blob/master/Sensu-go/Migrate_sensucore_to_sensugo.md)
