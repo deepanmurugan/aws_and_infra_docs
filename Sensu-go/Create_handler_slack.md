@@ -79,3 +79,4 @@ root@ip-172-31-38-43:/home/ubuntu# sensuctl check info local-memory-check --form
   }
 }
 ```
+You will now see the sensu go alerts in the slack channel.
