@@ -46,3 +46,8 @@ sensuctl create -f /sensu_config_translated/check_name.json
 ```
 sudo apt purge sensu-client
 ```
+13. Start sensu-backend and agent services.
+```
+sudo service sensu-backend start
+sudo service sensu-agent start
+```
