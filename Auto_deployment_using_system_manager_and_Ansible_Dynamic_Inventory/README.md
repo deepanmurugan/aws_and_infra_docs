@@ -18,7 +18,7 @@ It's upto the use case to have a seperate document created for your deployment o
 
 Go to AWS System Manager -> Documents -> Create command or session
 
-
+![](ssm-create.jpg)
 
 In the content section, I will be using the below modified content.
 
@@ -122,5 +122,9 @@ In the content section, I will be using the below modified content.
 ```
 
 I will be running this on my Ansible machine. The dynamic inventory file should be placed on the ansible machine at this path(/home/ubuntu/aws_ec2.yml) and the respective playbook should be available in this path(/home/ubuntu/Ansible_Playbook/).
+
+![](trigger_ssm.jpg)
+![](trigger_ssm_1.jpg)
+![](trigger_ssm_2.jpg)
 
 That's it! Now when you trigger the upgrade playbook with correct parameters, your group of hosts will be upgraded easily.
