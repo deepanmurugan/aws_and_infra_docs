@@ -123,6 +123,8 @@ In the content section, I will be using the below modified content.
 
 I will be running this on my Ansible machine. The dynamic inventory file should be placed on the ansible machine at this path(/home/ubuntu/aws_ec2.yml) and the respective playbook should be available in this path(/home/ubuntu/Ansible_Playbook/).
 
+### Running the playbook
+
 ![](trigger_ssm.jpg)
 ![](trigger_ssm_1.jpg)
 ![](trigger_ssm_2.jpg)
